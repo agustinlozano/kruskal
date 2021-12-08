@@ -1,9 +1,8 @@
 #include "kruskal.h"
 
-Node* newNode(int d, int p) {
-  Node* temp = (Node *)malloc(sizeof(Node));
-  temp->data = d;
-  temp->priority = p;
+Branch * newNode(Edge a) {
+  Branch *temp = (Branch *)malloc(sizeof(Branch));
+  temp->a = a;
   temp->next = NULL;
 
   return temp;
@@ -11,37 +10,43 @@ Node* newNode(int d, int p) {
 
 // Removes the element with the
 // highest priority form the list
-void pop(Node **head) {
-  Node* temp = (*head);
+Branch * pop(Branch **head) {
+  Branch *b = (*head);
   (*head) = (*head)->next;
-  free(temp);
+  
+  return b;
 }
 
 // Function to push according to priority
-void push(Node **head, int d, int p) {
-  Node* current = (*head);
+//Head = edges_set
+void push(Branch **head, Edge new_edge) {
+  Branch *current = (*head);
 
   // Create new Node
-  Node* temp = newNode(d, p);
+  Branch *newnode = newNode(new_edge);
 
   // Special Case: The head of list has lesser
   // priority than new node. So insert new
   // node before head node and change head node.
-  if ((*head)->priority > p) {
+  if ((*head)->a.cost > new_edge.cost) {
     // Insert New Node before head
-    temp->next = (*head);
-    (*head) = temp;
+    newnode->next = (*head);
+    (*head) = newnode;
 
   } else {
     // Traverse the list and find a
     // position to insert new node
-    while (current->next != NULL && current->next->priority < p) {
-        current = current->next;
+    while 
+      (current->next != NULL 
+        && 
+      current->next->a.cost < new_edge.cost) 
+    {
+      current = current->next;
     }
 
     // Either at the ends of the list
     // or at required position
-    temp->next = current->next;
-    current->next = temp;
+    newnode->next = current->next;
+    current->next = newnode;
   }
 }
