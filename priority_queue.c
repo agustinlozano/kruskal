@@ -1,6 +1,6 @@
 #include "kruskal.h"
 
-Branch * newNode(Edge a) {
+Branch * newNode(Edge *a) {
   Branch *temp = (Branch *)malloc(sizeof(Branch));
   temp->a = a;
   temp->next = NULL;
@@ -19,7 +19,7 @@ Branch * pop(Branch **head) {
 
 // Function to push according to priority
 //Head = edges_set
-void push(Branch **head, Edge new_edge) {
+void push(Branch **head, Edge *new_edge) {
   Branch *current = (*head);
 
   // Create new Node
@@ -28,7 +28,11 @@ void push(Branch **head, Edge new_edge) {
   // Special Case: The head of list has lesser
   // priority than new node. So insert new
   // node before head node and change head node.
-  if ((*head)->a.cost > new_edge.cost) {
+  if ((*head)->a->cost == 0) {
+    //Defino el head
+    (*head) = newnode;
+    
+  } else if ((*head)->a->cost > new_edge->cost) {
     // Insert New Node before head
     newnode->next = (*head);
     (*head) = newnode;
@@ -39,7 +43,7 @@ void push(Branch **head, Edge new_edge) {
     while 
       (current->next != NULL 
         && 
-      current->next->a.cost < new_edge.cost) 
+      current->next->a->cost < new_edge->cost) 
     {
       current = current->next;
     }
@@ -49,4 +53,28 @@ void push(Branch **head, Edge new_edge) {
     newnode->next = current->next;
     current->next = newnode;
   }
+}
+
+void print(Branch *head) {
+  Branch *current = head;
+
+  if (head != NULL) {
+    printf("\nAristas del arbol:\n");    
+    while (current != NULL) {
+      printf("\ta = (u, v) -> u = %d & v = %d & cost = %d\n", 
+        current -> a->u, current -> a->v, current -> a->cost);
+
+      current = current -> next;
+    }
+  } else {
+    printf("\nNada que mostrar, la lista esta vacia\n\n");
+  }
+}
+
+Edge * initEdge(int u, int v, int cost) {
+  Edge *a = (Edge *)malloc(sizeof(Edge));
+  a->cost = cost;
+  a->u = u;
+  a->v = v;
+  return a;
 }
