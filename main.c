@@ -14,7 +14,6 @@ int main(void) {
     }
   }
 
-  // Relleno los demas valores del arbol
   for (int i = 0; i <= VERTICES-1; i++) {
     //mitad de la matriz de adyacencia
     for (int j = i+1; j <= VERTICES-1; j++) {
