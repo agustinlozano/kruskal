@@ -10,20 +10,17 @@ typedef int vertice;
 
 #define VERTICES 5
 
-//Una arista cuenta con dos vertices y un entero para su peso
 typedef struct edge {
   vertice u;
   vertice v;
   int cost;
 } Edge;
 
-//Una rama cuenta con una Arista a y un enlace a la siguiente
 typedef struct branch {
   Edge *a;
   struct branch *next;
 } Branch;
 
-//El header posee la cuenta 
 typedef struct header {
   int count;
   int firt_element;
