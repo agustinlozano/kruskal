@@ -26,7 +26,7 @@ typedef struct branch {
 //El header posee la cuenta 
 typedef struct header {
   int count;
-  int firts_element;
+  int firt_element;
 } Header;
 
 typedef struct name {
