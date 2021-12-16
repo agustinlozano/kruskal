@@ -43,7 +43,7 @@ name_type _find(int x, CE_set *C);
 void kruskal(Branch *V);
 
 
-//Priority queue libraty
+//Priority queue library
 void print(Branch *head);
 void push(Branch **edges_set, Edge *a);
   Branch * newNode(Edge *a);
