@@ -18,22 +18,21 @@ Branch * pop(Branch **head) {
 }
 
 // Function to push according to priority
-//Head = edges_set
+// Head = edges_set
 void push(Branch **head, Edge *new_edge) {
   Branch *current = (*head);
 
   // Create new Node
   Branch *newnode = newNode(new_edge);
-
-  // Special Case: The head of list has lesser
-  // priority than new node. So insert new
-  // node before head node and change head node.
+ 
   if ((*head)->a->cost == 0) {
-    //Defino el head
+    // Special Case: Add head to the list
     (*head) = newnode;
     
   } else if ((*head)->a->cost > new_edge->cost) {
-    // Insert New Node before head
+    // Special Case: The head of list has lesser
+    // priority than new node. So insert new
+    // node before head node and change head node.
     newnode->next = (*head);
     (*head) = newnode;
 
