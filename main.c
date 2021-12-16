@@ -19,7 +19,7 @@ int main(void) {
     for (int j = i+1; j <= VERTICES-1; j++) {
      /* Aca lo que se logra es tener una lista enlazada
       * tipo priority queue, donde cada nodo representa 
-      * una rama minima del albol 
+      * una rama minima del grafo 
       */
       if (mcostos[i][j] != 0) {
         Edge *a = initEdge(i, j, mcostos[i][j]);
