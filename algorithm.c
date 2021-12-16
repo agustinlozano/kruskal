@@ -1,11 +1,10 @@
 #include "kruskal.h"
 
-/*  La funcion toma como parametro un arbol
+/*  La funcion toma como parametro un Grafo
  *  
- *  Arbol:
+ *  grafo:
  *  Es una lista enlazada de tipo priority queue
- *  donde cada node de esta lista es una rama minima del
- *  arbol.
+ *  donde cada nodo de esta lista es una rama minima.
  *  
  *  Nodo priority queue: rama minima
  * 
@@ -23,7 +22,6 @@ void kruskal(Branch *graph) {
   //Conjunto V agrupado en un conjunto de componentes tipo CE_set
   CE_set *components = (CE_set *)malloc(sizeof(CE_set));
 
-  /* Comienzo */
   //Cantidad actual de componentes
   int comp_n = VERTICES;
 
@@ -41,7 +39,7 @@ void kruskal(Branch *graph) {
     name_type v = _find(a->v, components);
 
     if (u != v) {
-      // a conecta dos componentes diferentes - ESTA TILDA EL PROGRAMA
+      //Edge a conecta dos componentes diferentes
       _union(a->u, a->v, components);
       push(&T, a);
       comp_n--;
