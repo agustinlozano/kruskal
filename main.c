@@ -6,9 +6,12 @@ int main(void) {
   Edge *a = (Edge *)malloc(sizeof(Edge)); 
   graph->a = a;
 
+  printf("\tAlgoritmo de Kruskal\n");
+  
+  printf("\nIngrese los datos requeridos del grafo en cuestion\n");
   for (int i = 0; i <= VERTICES-1; i++) {
     for (int j = i+1; j <= VERTICES-1; j++) {
-      printf("Ingrese el costo de lado entre vertices %d y %d: ", 
+      printf("\t- costo de la arista entre vertices %d y %d: ", 
         i, j);
       scanf(" %d", &mcostos[i][j]);
     }
